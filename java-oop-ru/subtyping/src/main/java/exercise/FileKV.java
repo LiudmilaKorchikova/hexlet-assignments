@@ -3,7 +3,7 @@ package exercise;
 import java.util.Map;
 
 // BEGIN
-public class FileKV implements KeyValueStorage{
+public class FileKV implements KeyValueStorage {
     private String path;
 
     public FileKV(String path, Map<String, String> dictionary) {
