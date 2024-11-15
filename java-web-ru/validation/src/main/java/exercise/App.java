@@ -3,7 +3,6 @@ package exercise;
 import io.javalin.Javalin;
 import io.javalin.validation.ValidationException;
 
-import java.util.ArrayList;
 import java.util.List;
 import exercise.model.Article;
 import exercise.dto.articles.ArticlesPage;
