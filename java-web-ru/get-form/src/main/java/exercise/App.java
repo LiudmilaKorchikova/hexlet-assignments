@@ -25,7 +25,7 @@ public final class App {
         });
 
         // BEGIN
-        app.get("/courses", ctx -> {
+        app.get("/users", ctx -> {
             var term = ctx.queryParam("term");
             List<User> users;
 
@@ -34,7 +34,7 @@ public final class App {
                         .filter(user -> StringUtils.startsWithIgnoreCase(user.getFirstName(), term))
                         .collect(Collectors.toList());
             } else {
-                users = new ArrayList<>();
+                users = USERS;
             }
             var page = new UsersPage(users, term);
             ctx.render("users/index.jte", model("page", page));
