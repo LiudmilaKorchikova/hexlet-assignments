@@ -23,18 +23,16 @@ public class NamedRoutes {
     }
 
     // BEGIN
-
-    // Маршрут для отображения формы редактирования конкретного поста
     public static String editPostPath(String id) {
-        return "/posts/" + id + "/edit";  // Генерация URL для редактирования поста по его ID
+        return "/posts/" + id + "/edit";
     }
 
-    // Маршрут для обработки обновления конкретного поста
+
     public static String updatePostPath(String id) {
-        return "/posts/update/" + id;  // Генерация URL для обновления поста по его ID
+        return "/posts/update/" + id;
     }
 
-    // Маршрут для отображения конкретного поста
+
     public static String showPostPath(String id) {
         return "/posts/show/" + id;
     }
