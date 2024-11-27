@@ -66,8 +66,8 @@ public class PostsController {
         Long id = ctx.pathParamAsClass("id", Long.class).get();
         var post = PostRepository.find(id)
                 .orElseThrow(() -> new NotFoundResponse("Post not found"));
-        var page = new EditPostPage(id, post.getName(), post.getBody(), new HashMap<>());
-        ctx.render("posts/edit.jte", model("page", page));
+        var page = new EditPostPage(post.getName(), post.getBody(), new HashMap<>());
+        ctx.render("posts/edit.jte", model("page", page, "id", id));
     }
 
     public static void update(Context ctx) {
@@ -95,10 +95,10 @@ public class PostsController {
             var errorMessages = e.getErrors();
             var name = ctx.formParam("name");
             var body = ctx.formParam("body");
-            var page = new EditPostPage(id, name, body, errorMessages);
+            var page = new EditPostPage(name, body, errorMessages);
 
 
-            ctx.render("posts/edit.jte", model("page", page, "postId", id)).status(422);
+            ctx.render("posts/edit.jte", model("page", page, "id", id)).status(422);
         }
     }
     // END

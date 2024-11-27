@@ -3,6 +3,7 @@
 @import io.javalin.validation.ValidationError
 
 @param EditPostPage page
+@param Long id
 
 @template.layout.page(
     content = @`
@@ -13,7 +14,7 @@
         </head>
         <body>
             <h1>Edit Post</h1>
-            <form action="${NamedRoutes.updatePostPath(page.getId().toString())}" method="post">
+            <form action="${NamedRoutes.updatePostPath(id.toString())}" method="post">
                     <label for="name">Title</label>
                     <input type="text" id="name" name="name" value="${page.getName()}" class="form-control" required>
                     @if (page.getErrors() != null && page.getErrors().containsKey("name"))
