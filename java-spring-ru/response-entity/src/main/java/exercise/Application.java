@@ -66,11 +66,11 @@ public class Application {
             // Обновляем только поля, кроме ID
             post.setTitle(data.getTitle());
             post.setBody(data.getBody());
-            return ResponseEntity.ok().body(post); // 200 OK
+            return ResponseEntity.ok().body(post); // 200 OK, если пост найден
         }
 
         // Возвращаем статус 204 No Content, если пост не найден
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
 
