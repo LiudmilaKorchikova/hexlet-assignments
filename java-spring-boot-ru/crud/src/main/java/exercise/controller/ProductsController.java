@@ -50,11 +50,15 @@ public class ProductsController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ProductDTO create(@Valid @RequestBody ProductCreateDTO productData) {
-        var category = categoryRepository.findById(productData.getCategoryId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Category Not Found"));
+    public ProductDTO create(@RequestBody ProductCreateDTO productData) {
+        var category = categoryRepository.findById(productData.getCategoryId());
+        if (category.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Category not found");
+        }
         var product = productMapper.map(productData);
-        product.setCategory(category);
+        product.setCategory(category.get());
+        product.setTitle(productData.getTitle());
+        product.setPrice(productData.getPrice());
         productRepository.save(product);
 
         var productDTO = productMapper.map(product);

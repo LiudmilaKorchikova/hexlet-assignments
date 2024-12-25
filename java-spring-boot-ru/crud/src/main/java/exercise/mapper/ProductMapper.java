@@ -4,11 +4,7 @@ import exercise.dto.ProductCreateDTO;
 import exercise.dto.ProductDTO;
 import exercise.dto.ProductUpdateDTO;
 import exercise.model.Product;
-import org.mapstruct.Mapper;
-import org.mapstruct.MappingConstants;
-import org.mapstruct.MappingTarget;
-import org.mapstruct.NullValuePropertyMappingStrategy;
-import org.mapstruct.ReportingPolicy;
+import org.mapstruct.*;
 
 // BEGIN
 @Mapper(
@@ -20,6 +16,7 @@ import org.mapstruct.ReportingPolicy;
 public abstract class ProductMapper {
     public abstract Product map(ProductCreateDTO dto);
 
+    @Mapping(target = "categoryId", source = "category.id")
     public abstract ProductDTO map(Product model);
 
     public abstract void update(ProductUpdateDTO dto, @MappingTarget Product model);
