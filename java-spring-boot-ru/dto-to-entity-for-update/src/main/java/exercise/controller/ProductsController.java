@@ -66,6 +66,7 @@ public class ProductsController {
     }
 
     private Product toEntity(ProductUpdateDTO productDto, Product product) {
+
         product.setTitle(productDto.getTitle());
         product.setPrice(productDto.getPrice());
         return product;
